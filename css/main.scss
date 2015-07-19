@@ -23,7 +23,8 @@ $grey-color-dark:  darken($grey-color, 25%);
 $content-width:    800px;
 
 $on-palm:          600px;
-$on-laptop:        800px;
+$laptop-width:     800px;
+$on-laptop:        $laptop-width;
 
 
 // Using media queries with like this:
@@ -40,5 +41,56 @@ $on-laptop:        800px;
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-//@import
-//;
+// idk what best preactice is for splitting partials and main. for now I am just putting the stuff
+// that only matters for single pages in partials
+@import "hero";
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.site-header {
+    background-color: darkgrey;
+    height: 40px;
+    width: 100%;
+    
+    .site-title {
+        float: left;
+        margin-left: calc(50% - 400px);
+        @include media-query($laptop-width + 15px) {
+            margin-left: 10px;
+        }        
+    }
+
+    .site-nav {
+        float: right;
+        margin-right: calc(50% - 400px);
+        @include media-query($laptop-width + 15px) {
+            margin-right: 10px;
+        }        
+    }
+}
+
+.page-content {
+    background-color: darkkhaki;
+    
+    width: $laptop-width;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @include media-query($laptop-width) {
+        width: 100%;
+    }
+
+    .page-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        background-color: aqua;
+        margin: 10px;
+    }
+}
+
+//footer style!
