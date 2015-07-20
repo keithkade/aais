@@ -5,10 +5,15 @@
     
     <body>
 
+        <!-- banner with hero image and logo for the homepage -->
+        {% if page.url == "/index.html" %}
+            {% include hero.html %}
+        {% endif %}
+        
         {% include header.html %}
         
         <div class="page-content">
-            <div class="page-wrapper">
+            <div class="wrapper">
                 {{ content }}
             </div>
         </div>
