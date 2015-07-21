@@ -2,30 +2,21 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 @charset "utf-8";
+@import url(http://fonts.googleapis.com/css?family=Lato);
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+$base-font-family: Lato, Helvetica, Arial, sans-serif;
 
-$spacing-unit:     30px;
+$grey:       #989898;
+$grey-light: lighten($grey, 30%);
+$grey-dark:  darken($grey, 30%);
 
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
-
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+$header-height: 40px;
+$tamu-stamp-width: 200px;
 
 // Width of the content area
-$content-width:    800px;
-
-$on-palm:          600px;
-$laptop-width:     800px;
-$on-laptop:        $laptop-width;
-
+$content-width: 900px;
+$half-content-width: $content-width/2;
 
 // Using media queries with like this:
 // @include media-query($on-palm) {
@@ -34,10 +25,23 @@ $on-laptop:        $laptop-width;
 //         padding-left: $spacing-unit / 2;
 //     }
 // }
-@mixin media-query($device) {
-    @media screen and (max-width: $device) {
+@mixin media-query($size) {
+    @media screen and (max-width: $size) {
         @content;
     }
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin horizontal-align {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
@@ -50,53 +54,7 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-}
-
-.site-header {
-    background-color: darkgrey;
-    height: 40px;
-    width: 100%;
-    
-    .site-title {
-        float: left;
-        margin-left: calc(50% - 400px);
-        @include media-query($laptop-width + 15px) {
-            margin-left: 10px;
-        }        
-    }
-
-    .site-nav {
-        float: right;
-        margin-right: calc(50% - 400px);
-        @include media-query($laptop-width + 15px) {
-            margin-right: 10px;
-        }        
-    }
-}
-
-.page-content {
-    background-color: darkkhaki;
-    
-    width: $laptop-width;
-    margin-left: auto;
-    margin-right: auto;
-    
-    @include media-query($laptop-width) {
-        width: 100%;
-    }
-
-}
-
-.site-footer {
-    background-color: darkkhaki;
-    
-    width: $laptop-width;
-    margin-left: auto;
-    margin-right: auto;
-    
-    @include media-query($laptop-width) {
-        width: 100%;
-    }
+    font-family: $base-font-family;
 }
 
 .wrapper {
@@ -105,3 +63,82 @@ body, html {
     background-color: aqua;
     margin: 10px;
 }
+
+.site-header {
+    background-color: $grey-dark;
+    height: $header-height;
+    width: 100%;
+
+    .site-title, .page-link {
+        text-decoration: none;
+        color: white;
+    }
+    
+    .site-title {
+        float: left;
+        margin-left: calc(50% - #{$half-content-width});
+        @include media-query($content-width + 15px) {
+            margin-left: 10px;
+        }
+        @include vertical-align;
+    
+        font-size: 26px;
+    }
+
+    .site-nav {
+        float: right;
+        margin-right: calc(50% - #{$half-content-width});
+        @include media-query($content-width + 15px) {
+            margin-right: 10px;
+        }        
+        @include vertical-align;
+
+        .page-link {
+            margin: 10px;
+            transition: .2s;
+        }
+        .page-link:hover {
+            color: $grey;
+        }
+    }
+}
+
+.page-content {
+    background-color: darkkhaki;
+    
+    width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @include media-query($content-width) {
+        width: 100%;
+    }
+
+}
+
+.site-footer {
+    background-color: darkkhaki;
+    
+    width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @include media-query($content-width) {
+        width: 100%;
+    }
+    
+    .footer-left {
+        float: left;
+        width: $tamu-stamp-width;
+    }
+    
+    .footer-right {
+        float: right;
+        width: calc(100% - #{$tamu-stamp-width} - 20px);
+    }
+    
+    .tamu-stamp {
+        width: $tamu-stamp-width;
+    }
+}
+
