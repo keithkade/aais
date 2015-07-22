@@ -4,21 +4,33 @@
              
         <div class="footer-left">
             <a href="http://www.tamu.edu/" target="_blank">
-                <img class="tamu-stamp" src="img/TAM-PrimaryMarkB.png">
+                <img class="tamu-stamp" src="/img/TAM-PrimaryMarkB.png">
             </a>
         </div>
 
         <div class="footer-right">
-            <ul class="contact-list">
-                <li>{{ site.title }}</li>
-                <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            
+            <ul class="footer-links">
+                <li><a href="#">Constitution</a> |</li>                
+                <li><a href="#">TAMU CS Dept</a> |</li>
+                <li><a href="#">TAMU Site Policies</a></li>
             </ul>
-
-            <div>
-                <p>{{ site.description }}</p>
-            </div>
+            
+            <ul class="contact-list">
+                <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            </ul>         
+                
+            <p class="auth-credit">Site by Kade Keith</p>
+            
         </div>
 
+                    
+        <div class="copyright">
+            <p>
+                Copyright © 20{{ site.time | date: '%y' }} Aggie Artificial Intelligence Society, Texas A&amp;M University
+            </p>
+        </div>   
+        
     </div>
 
 </footer>

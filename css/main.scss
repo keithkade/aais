@@ -11,6 +11,9 @@ $grey:       #989898;
 $grey-light: lighten($grey, 30%);
 $grey-dark:  darken($grey, 30%);
 
+$maroon:    maroon;
+$maroon-dark: darken($maroon, 30%);
+
 $header-height: 40px;
 $tamu-stamp-width: 200px;
 
@@ -47,22 +50,25 @@ $half-content-width: $content-width/2;
 // Import partials from `sass_dir` (defaults to `_sass`)
 // idk what best preactice is for splitting partials and main. for now I am just putting the stuff
 // that only matters for single pages in partials
+@import "reset";
 @import "hero";
 
 body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
     font-family: $base-font-family;
+}
+
+a {
+    text-decoration: none;
+    transition: .2s;
 }
 
 .wrapper {
     margin-left: auto;
     margin-right: auto;
-    background-color: aqua;
     margin: 10px;
 }
+
+/*=====================Header Style=====================*/
 
 .site-header {
     background-color: $grey-dark;
@@ -70,7 +76,6 @@ body, html {
     width: 100%;
 
     .site-title, .page-link {
-        text-decoration: none;
         color: white;
     }
     
@@ -103,28 +108,21 @@ body, html {
     }
 }
 
-.page-content {
-    background-color: darkkhaki;
-    
+/*=====================Footer Style=====================*/
+
+.site-footer {    
     width: $content-width;
     margin-left: auto;
     margin-right: auto;
+    
+    border-top: 1px solid $grey;
     
     @include media-query($content-width) {
         width: 100%;
     }
-
-}
-
-.site-footer {
-    background-color: darkkhaki;
     
-    width: $content-width;
-    margin-left: auto;
-    margin-right: auto;
-    
-    @include media-query($content-width) {
-        width: 100%;
+    .tamu-stamp {
+        width: $tamu-stamp-width;
     }
     
     .footer-left {
@@ -135,10 +133,70 @@ body, html {
     .footer-right {
         float: right;
         width: calc(100% - #{$tamu-stamp-width} - 20px);
+
+        .footer-links {
+            float: right;
+            list-style: none;
+            margin: 2px;
+            
+            li {
+                display: inline;
+                
+                a {
+                    color: $maroon;
+                }
+                a:hover {
+                    color: $maroon-dark;
+                }
+            }
+        }
+
+        .contact-list {
+            float: right;
+            list-style: none;
+            text-align: right;
+            clear: right;
+            margin-top: 10px;
+        }
+        
+        .auth-credit {
+            float: right;
+            clear: right;
+            margin-top: 10px;
+        }
     }
     
-    .tamu-stamp {
-        width: $tamu-stamp-width;
+    .copyright {
+        clear: both;
+        text-align: center;
+        color: $grey;
     }
 }
 
+/*=====================Content Style=====================*/
+
+.page-content {    
+    width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @include media-query($content-width) {
+        width: 100%;
+    }
+
+    .post-list {
+        li {
+            margin: 10px;
+            border-top: 2px solid $grey;
+            
+            h2 {
+                font-size: 20px;
+                margin-top: 10px;
+            }
+            
+            .post-meta {
+                text-align: right;
+            }
+        }
+    }
+}
