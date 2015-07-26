@@ -3,7 +3,8 @@
     <div class="header-content">
         <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
 
-        <nav class="site-nav">
+        <span class="nav-burger" onclick="toggleNav()">&#9776;</span>
+        <nav class="site-nav" id="main-nav">
             {% for page in site.pages %}
                 {% if page.title %}
                     <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
