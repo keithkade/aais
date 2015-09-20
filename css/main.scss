@@ -235,7 +235,11 @@ a {
             
             h2 {
                 font-size: 20px;
-                margin-top: 10px;
+                margin: 10px 0 10px 0;
+            }
+            
+            p {
+                margin: 10px;
             }
             
             .post-meta {
@@ -243,6 +247,10 @@ a {
             }
         }
     }
+}
+
+.page-heading {
+    font-size: 24px;
 }
 
 /*=====================Responsive!=====================*/
