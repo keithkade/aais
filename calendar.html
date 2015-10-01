@@ -4,10 +4,33 @@ title: Calendar
 permalink: /calendar/
 ---
 
+<link rel='stylesheet' href='/bower_components/fullcalendar/dist/fullcalendar.css' />
+<script src='/bower_components/jquery/dist/jquery.min.js'></script>
+<script src='/bower_components/moment/min/moment.min.js'></script>
+<script src='/bower_components/fullcalendar/dist/fullcalendar.js'></script>
 
 <div class="home">
 
-    <h1 class="page-heading">Coming Soon</h1>
-    <p>Coming Soon</p>
+    <div id='calendar'></div>
     
 </div>
+
+<script>
+    $(document).ready(function() {
+        var cal = $('#calendar');
+        cal.fullCalendar();
+        
+        var title = "Weekly Meeting";
+        var startHr = 17;
+        var endHr = 18;
+        var dates = [[8,18], [9,2], [9,16], [9,30], [10,13], [10,27], [11,11]];
+        for (var i = 0; i < dates.length; i++){    
+            var event = {
+              title: title,
+              start: new Date(2015, dates[i][0], dates[i][1], startHr),
+              end: new Date(2015, dates[i][0], dates[i][1], endHr)
+            };
+            cal.fullCalendar('renderEvent', event, true);
+        }
+    });
+</script>
