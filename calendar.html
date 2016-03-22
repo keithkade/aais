@@ -20,15 +20,18 @@ permalink: /calendar/
         var cal = $('#calendar');
         cal.fullCalendar();
         
-        var title = "Weekly Meeting";
+        var title = "Meeting";
         var startHr = 17;
+        var startMin = 40;
         var endHr = 18;
-        var dates = [[8,18], [9,2], [9,16], /*[9,30], [10,13], [10,27], [11,11]*/];
+        var endMin = 40;
+        //month and day are 0 indexed
+        var dates = [[2,23]];
         for (var i = 0; i < dates.length; i++){    
             var event = {
               title: title,
-              start: new Date(2015, dates[i][0], dates[i][1], startHr),
-              end: new Date(2015, dates[i][0], dates[i][1], endHr)
+              start: new Date(2016, dates[i][0], dates[i][1], startHr, startMin),
+              end: new Date(2016, dates[i][0], dates[i][1], endHr, endMin)
             };
             cal.fullCalendar('renderEvent', event, true);
         }
